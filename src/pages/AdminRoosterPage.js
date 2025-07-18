@@ -1004,41 +1004,13 @@ export default function AdminRoosterPage({ user }) {
       });
     }
 
-    // Voeg bovenaan toe:
-    // Functie om modal te openen
-    function openEditModal(volunteer) {
-        // Haal alle blokken voor deze vrijwilliger en dag
-        const blocks = roosterForDay.filter(r => r.volunteer === volunteer);
-        setEditBlocks(blocks.map(b => ({ ...b })));
-    }
-    // Functie om modal te sluiten
-    function closeEditModal() {
-        setEditBlocks([]);
-    }
-    // Functie om wijzigingen op te slaan
-    async function saveEditBlocks() {
-        setLoading(true);
-        setError('');
-        try {
-            // Update elk blok in Airtable
-            for (const block of editBlocks) {
-                await base('Team Roosters').update([{
-                    id: block.id,
-                    fields: {
-                        'Afdeling': [block.afdeling],
-                        'Start tijd': block.start,
-                        'Eind tijd': block.end
-                    }
-                }]);
-            }
-            setMessage('Rooster bijgewerkt!');
-            closeEditModal();
-            // Refresh rooster data
-            setTimeout(() => window.location.reload(), 1000);
-        } catch (err) {
-            setError('Fout bij opslaan rooster.');
-        }
-        setLoading(false);
+    // Functie om blokken te selecteren voor verwijdering
+    function toggleBlockSelection(blockId) {
+        setSelectedBlocksToDelete(prev => 
+            prev.includes(blockId) 
+                ? prev.filter(id => id !== blockId)
+                : [...prev, blockId]
+        );
     }
 
     async function handleDeleteSelectedBlocks() {
@@ -1076,15 +1048,6 @@ export default function AdminRoosterPage({ user }) {
             setError(`Fout bij verwijderen roosterblokken: ${err.message}`);
         }
         setLoading(false);
-    }
-
-    // Functie om blokken te selecteren voor verwijdering
-    function toggleBlockSelection(blockId) {
-        setSelectedBlocksToDelete(prev => 
-            prev.includes(blockId) 
-                ? prev.filter(id => id !== blockId)
-                : [...prev, blockId]
-        );
     }
 
     return (
