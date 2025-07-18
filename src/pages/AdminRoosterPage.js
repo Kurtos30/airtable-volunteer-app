@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Airtable from 'airtable';
 import { useLocation } from 'react-router-dom';
-import { FaTrash } from 'react-icons/fa';
 
 const base = new Airtable({
     apiKey: process.env.REACT_APP_AIRTABLE_API_KEY
@@ -24,7 +23,6 @@ export default function AdminRoosterPage({ user }) {
     const [roosterLoading, setRoosterLoading] = useState(true);
     const location = useLocation();
     const [filterEvent, setFilterEvent] = useState('');
-    const [searchName, setSearchName] = useState('');
     const [selectedRoosterDate, setSelectedRoosterDate] = useState('');
     const [departments, setDepartments] = useState([]);
     const [newDepartment, setNewDepartment] = useState('');
@@ -32,11 +30,8 @@ export default function AdminRoosterPage({ user }) {
     const [editingDepartmentName, setEditingDepartmentName] = useState('');
     const [adminTab, setAdminTab] = useState('beheer'); // 'beheer' of 'bekijken'
     // Move these up from below
-    const [editModalOpen, setEditModalOpen] = useState(false);
-    const [editVolunteer, setEditVolunteer] = useState(null);
     const [editBlocks, setEditBlocks] = useState([]);
     const [selectedBlocksToDelete, setSelectedBlocksToDelete] = useState([]);
-    const [deleteMode, setDeleteMode] = useState(false);
     
     // Haal alle evenementen op
     useEffect(() => {
@@ -1017,19 +1012,11 @@ export default function AdminRoosterPage({ user }) {
     function openEditModal(volunteer) {
         // Haal alle blokken voor deze vrijwilliger en dag
         const blocks = roosterForDay.filter(r => r.volunteer === volunteer);
-        setEditVolunteer(volunteer);
         setEditBlocks(blocks.map(b => ({ ...b })));
-        setEditModalOpen(true);
     }
     // Functie om modal te sluiten
     function closeEditModal() {
-        setEditModalOpen(false);
-        setEditVolunteer(null);
         setEditBlocks([]);
-    }
-    // Functie om blok te updaten in modal
-    function handleEditBlockChange(index, field, value) {
-        setEditBlocks(prev => prev.map((b, i) => i === index ? { ...b, [field]: value } : b));
     }
     // Functie om wijzigingen op te slaan
     async function saveEditBlocks() {
@@ -1100,7 +1087,6 @@ export default function AdminRoosterPage({ user }) {
             await base('Team Roosters').destroy(validIds);
             setMessage(`${validIds.length} roosterblok(ken) verwijderd!`);
             setSelectedBlocksToDelete([]);
-            setDeleteMode(false);
             // Refresh rooster data
             setTimeout(() => {
                 window.location.reload();
