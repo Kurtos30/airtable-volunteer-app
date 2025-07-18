@@ -20,7 +20,6 @@ export default function AdminRoosterPage({ user }) {
     const [message, setMessage] = useState('');
     const [error, setError] = useState('');
     const [roosterRecords, setRoosterRecords] = useState([]);
-    const [roosterLoading, setRoosterLoading] = useState(true);
     const location = useLocation();
     const [filterEvent, setFilterEvent] = useState('');
     const [selectedRoosterDate, setSelectedRoosterDate] = useState('');
@@ -87,7 +86,6 @@ export default function AdminRoosterPage({ user }) {
 
     // Haal rooster records op
     const fetchRooster = async () => {
-        setRoosterLoading(true);
         try {
             // First, let's check what fields are available in the Team Roosters table
             console.log('Checking Team Roosters table structure...');
@@ -138,7 +136,6 @@ export default function AdminRoosterPage({ user }) {
         } catch (err) {
             setError('Fout bij ophalen rooster.');
         }
-        setRoosterLoading(false);
     };
 
     useEffect(() => {
@@ -1044,24 +1041,6 @@ export default function AdminRoosterPage({ user }) {
         setLoading(false);
     }
 
-    async function handleDeleteBlock(blockId) {
-        setLoading(true);
-        setError('');
-        try {
-            await base('Team Roosters').destroy([blockId]);
-            setMessage('Roosterblok verwijderd!');
-            // Refresh rooster data
-            setTimeout(() => {
-                window.location.reload();
-            }, 1000);
-        } catch (err) {
-            console.error('Error deleting block:', err);
-            setError('Fout bij verwijderen roosterblok.');
-        }
-        setLoading(false);
-    }
-
-    // Nieuwe functie voor het verwijderen van meerdere blokken
     async function handleDeleteSelectedBlocks() {
         if (selectedBlocksToDelete.length === 0) {
             setError('Selecteer eerst roosterblokken om te verwijderen.');
