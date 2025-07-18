@@ -1,0 +1,629 @@
+/* Mobile-first basis */
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  min-height: 100vh;
+  font-size: 16px;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.app-container {
+  width: 100vw;
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+  background: var(--background-color);
+  padding-bottom: 20px; /* Add bottom padding since footer is removed */
+}
+
+.home-container, .profile-container, .modal, .team-roster {
+  width: 100vw;
+  max-width: 100vw;
+  padding: 0 8px;
+  box-sizing: border-box;
+  margin-bottom: 20px; /* Add bottom margin for better spacing */
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 700px) {
+  .app-container {
+    padding-bottom: 10px;
+  }
+  
+  .home-container, .profile-container, .modal, .team-roster {
+    padding: 0 4px;
+    margin-bottom: 10px;
+  }
+  
+  .App {
+    padding: 8px;
+    margin: 0;
+  }
+  
+  /* Better mobile table handling */
+  table {
+    font-size: 14px;
+  }
+  
+  .team-roster th, .team-roster td {
+    padding: 4px 2px;
+  }
+  
+  /* Mobile-friendly buttons */
+  .nav-button, .nav-button-secondary, button {
+    padding: 12px 16px;
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  
+  /* Mobile-friendly inputs */
+  input, select, textarea {
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  /* Mobile modal improvements */
+  .modal {
+    width: 98vw;
+    padding: 12px;
+    margin: 10px;
+  }
+  
+  /* Mobile profile improvements */
+  .profile-container {
+    padding: 12px 8px;
+    margin: 10px auto;
+  }
+  
+  .profile-details p {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+  
+  /* Mobile calendar improvements */
+  .rbc-calendar {
+    font-size: 14px;
+  }
+  
+  .rbc-header {
+    padding: 4px 2px;
+    font-size: 12px;
+  }
+  
+  .rbc-event {
+    font-size: 12px;
+    padding: 2px 4px;
+  }
+}
+
+.home-navigation {
+  flex-direction: column;
+  gap: 12px;
+  display: flex;
+  align-items: stretch;
+}
+
+.nav-button, .nav-button-secondary, button {
+  width: 100%;
+  font-size: 18px;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  box-sizing: border-box;
+}
+
+input, select, textarea {
+  width: 100%;
+  font-size: 18px;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  box-sizing: border-box;
+}
+
+.profile-details p, .profile-details label {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+/* Tabellen horizontaal scrollbaar op mobiel */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow-x: auto;
+  display: block;
+}
+thead, tbody, tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+@media (min-width: 700px) {
+  .home-container, .profile-container, .modal, .team-roster {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+  .home-navigation {
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+  }
+  .nav-button, .nav-button-secondary, button {
+    width: auto;
+    min-width: 180px;
+    font-size: 18px;
+    padding: 12px 32px;
+    margin-bottom: 0;
+  }
+  input, select, textarea {
+    font-size: 18px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+/* Modals fullscreen op mobiel */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.modal {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  width: 95vw;
+  max-width: 400px;
+  box-sizing: border-box;
+}
+@media (min-width: 700px) {
+  .modal {
+    max-width: 500px;
+    padding: 32px;
+  }
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.App {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.agenda-list {
+  display: grid;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.agenda-item {
+  background: var(--app-background-color);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px var(--box-shadow-color);
+}
+
+.agenda-item h3 {
+  margin: 0 0 10px 0;
+  color: var(--text-color);
+}
+
+.agenda-item p {
+  margin: 5px 0;
+  color: var(--text-color);
+}
+
+button {
+  background: var(--primary-button-background);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background: var(--primary-button-hover);
+}
+
+.error {
+  color: var(--error-color);
+  padding: 10px;
+  background: var(--error-background);
+  border-radius: 4px;
+  margin: 10px 0;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--background-color);
+}
+
+.login-box {
+    padding: 40px;
+    background: var(--app-background-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px var(--box-shadow-color);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-box h1 {
+    margin-bottom: 20px;
+}
+
+.login-box p {
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+.login-box input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    box-sizing: border-box; /* Important */
+}
+
+.login-box button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--primary-button-background);
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.login-box button:disabled {
+    background-color: var(--secondary-button-background);
+}
+
+.error {
+    color: #d9534f;
+    margin-top: 15px;
+}
+
+.header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: var(--header-background);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.header p {
+    margin: 0;
+    margin-right: 15px;
+    color: var(--text-color);
+}
+
+.logout-button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--secondary-button-background);
+    color: white;
+    cursor: pointer;
+}
+
+.logout-button:hover {
+    background-color: var(--secondary-button-hover);
+}
+
+.home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+}
+
+.home-box {
+    text-align: center;
+}
+
+.home-navigation {
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.nav-button {
+    display: block;
+    padding: 20px 40px;
+    background-color: var(--primary-button-background);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+.nav-button:hover {
+    background-color: var(--primary-button-hover);
+}
+
+.profile-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background: var(--app-background-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px var(--box-shadow-color);
+}
+
+.profile-details p {
+    font-size: 16px;
+    line-height: 1.6;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.profile-details p:last-child {
+    border-bottom: none;
+}
+
+.theme-selector {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.theme-selector label {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.theme-selector select {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    background-color: var(--app-background-color);
+    color: var(--text-color);
+}
+
+.profile-buttons {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+}
+
+.nav-button-secondary {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--secondary-button-background);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.nav-button-secondary:hover {
+    background-color: var(--secondary-button-hover);
+}
+
+.profile-details label {
+    display: block;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.profile-details input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    box-sizing: border-box;
+    background-color: var(--app-background-color);
+    color: var(--text-color);
+}
+
+.profile-details input:disabled {
+    background-color: var(--background-color);
+    color: #666;
+}
+
+.team-roster {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
+}
+
+.team-roster h3 {
+  margin-bottom: 15px;
+}
+
+.team-roster table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.team-roster th, .team-roster td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.team-roster th {
+  font-weight: bold;
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: var(--app-background-color);
+    padding: 30px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 5px 15px var(--box-shadow-color);
+}
+
+.modal-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.registered-events {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.registered-events h2 {
+    margin-bottom: 15px;
+}
+
+.registered-events ul {
+    list-style: none;
+    padding: 0;
+}
+
+.registered-events li {
+    margin-bottom: 15px;
+    padding: 10px;
+    background: var(--app-background-color);
+    border-radius: 4px;
+    border-left: 4px solid var(--primary-button-background);
+}
+
+.day-selection {
+    margin: 20px 0;
+    padding: 15px;
+    background: var(--app-background-color);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.day-selection h3 {
+    margin: 0 0 15px 0;
+    color: var(--text-color);
+}
+
+.day-checkboxes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.day-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.day-checkbox:hover {
+    background-color: var(--border-color);
+}
+
+.day-checkbox input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.day-checkbox span {
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+[data-theme] .header {
+  background-color: var(--header-background);
+  background-image: var(--header-decoration, none);
+  background-repeat: repeat-x;
+  background-size: auto 60px;
+  background-position: bottom left;
+}
+
+[data-theme] body, [data-theme] .app-container {
+  background-color: var(--background-color);
+  background-image: var(--background-decoration, none);
+  background-repeat: repeat;
+  background-size: 120px 120px;
+  background-position: top left;
+} 
+
+/* Sticky bottom navigation bar voor mobiel - REMOVED */
+/* @media (max-width: 700px) {
+  .bottom-nav {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    height: 60px;
+    background: #fff;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 2000;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.04);
+  }
+  .bottom-nav__item {
+    flex: 1;
+    text-align: center;
+    color: #444;
+    font-size: 13px;
+    text-decoration: none;
+    padding: 0;
+    background: none;
+    border: none;
+    outline: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  .bottom-nav__item svg {
+    font-size: 24px;
+    margin-bottom: 2px;
+  }
+  .bottom-nav__item--active {
+    color: var(--primary-button-background, #4a90e2);
+    font-weight: bold;
+  }
+} */ 

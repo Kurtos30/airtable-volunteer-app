@@ -1,0 +1,253 @@
+/* In dit bestand definiëren we onze thema's met CSS-variabelen. */
+
+/* Standaard (Licht) Thema */
+:root {
+  --background-color: #f4f7f6;
+  --app-background-color: #ffffff;
+  --text-color: #333333;
+  --header-background: #f8f9fa;
+  --border-color: #dee2e6;
+  --primary-button-background: #007bff;
+  --primary-button-hover: #0056b3;
+  --secondary-button-background: #6c757d;
+  --secondary-button-hover: #5a6268;
+  --box-shadow-color: rgba(0,0,0,0.1);
+  --error-color: #d9534f;
+  --error-background: #f8d7da;
+}
+
+/* Donker Thema */
+[data-theme='dark'] {
+  --background-color: #121212;
+  --app-background-color: #1e1e1e;
+  --text-color: #e0e0e0;
+  --header-background: #2a2a2a;
+  --border-color: #444444;
+  --primary-button-background: #0088cc;
+  --primary-button-hover: #00aaff;
+  --secondary-button-background: #555555;
+  --secondary-button-hover: #777777;
+  --box-shadow-color: rgba(255,255,255,0.1);
+  --error-color: #ff8a80;
+  --error-background: #4d2323;
+}
+
+/* Natuur Thema */
+[data-theme='nature'] {
+  --background-color: #f5f0e1;
+  --app-background-color: #e8f5e9;
+  --text-color: #4e342e;
+  --header-background: #c8e6c9;
+  --border-color: #a1887f;
+  --primary-button-background: #2e7d32;
+  --primary-button-hover: #1b5e20;
+  --secondary-button-background: #795548;
+  --secondary-button-hover: #5d4037;
+  --box-shadow-color: rgba(78, 52, 46, 0.15);
+  --error-color: #c62828;
+  --error-background: #ffcdd2;
+}
+
+/* Cyberpunk Thema */
+[data-theme='cyberpunk'] {
+  --background-color: #0d0221;
+  --app-background-color: #261447;
+  --text-color: #00f6ff;
+  --header-background: #22092C;
+  --border-color: #ff00ff;
+  --primary-button-background: #f0f;
+  --primary-button-hover: #ff33ff;
+  --secondary-button-background: #007fff;
+  --secondary-button-hover: #3399ff;
+  --box-shadow-color: rgba(255, 0, 255, 0.2);
+  --error-color: #fff200;
+  --error-background: rgba(255, 0, 0, 0.2);
+}
+
+/* Oceaan Thema */
+[data-theme='ocean'] {
+  --background-color: #e0f7fa;
+  --app-background-color: #ffffff;
+  --text-color: #004d40;
+  --header-background: #b2ebf2;
+  --border-color: #4dd0e1;
+  --primary-button-background: #0097a7;
+  --primary-button-hover: #00796b;
+  --secondary-button-background: #26a69a;
+  --secondary-button-hover: #00897b;
+  --box-shadow-color: rgba(0, 77, 64, 0.1);
+  --error-color: #e57373;
+  --error-background: #ffcdd2;
+}
+
+/* Retro Thema */
+[data-theme='retro'] {
+  --background-color: #fbeec1;
+  --app-background-color: #f9d423;
+  --text-color: #2d2d2d;
+  --header-background: #ff6f3c;
+  --border-color: #ff9a3c;
+  --primary-button-background: #ff6f3c;
+  --primary-button-hover: #ff9a3c;
+  --secondary-button-background: #6b4226;
+  --secondary-button-hover: #a47149;
+  --box-shadow-color: rgba(107, 66, 38, 0.15);
+  --error-color: #d7263d;
+  --error-background: #ffe1e1;
+}
+
+/* Pastel Thema */
+[data-theme='pastel'] {
+  --background-color: #fdf6f0;
+  --app-background-color: #f7e7e1;
+  --text-color: #6d6875;
+  --header-background: #b5ead7;
+  --border-color: #ffdac1;
+  --primary-button-background: #ffb7b2;
+  --primary-button-hover: #ffdac1;
+  --secondary-button-background: #b5ead7;
+  --secondary-button-hover: #c7ceea;
+  --box-shadow-color: rgba(109, 104, 117, 0.10);
+  --error-color: #ff6f91;
+  --error-background: #ffe1e1;
+}
+
+/* Halloween Thema */
+[data-theme='halloween'] {
+  --background-color: #1a1a1a;
+  --app-background-color: #2d2d2d;
+  --text-color: #ff7518;
+  --header-background: #3d3d3d;
+  --border-color: #ff7518;
+  --primary-button-background: #ff7518;
+  --primary-button-hover: #ffb347;
+  --secondary-button-background: #4b1d06;
+  --secondary-button-hover: #ff7518;
+  --box-shadow-color: rgba(255, 117, 24, 0.15);
+  --error-color: #ff1744;
+  --error-background: #3d1a1a;
+  --header-decoration: url('/halloween-ghosts.svg');
+  --background-decoration: url('/halloween-jackolanterns.svg');
+}
+
+/* Solarized Thema */
+[data-theme='solarized'] {
+  --background-color: #fdf6e3;
+  --app-background-color: #eee8d5;
+  --text-color: #657b83;
+  --header-background: #b58900;
+  --border-color: #93a1a1;
+  --primary-button-background: #268bd2;
+  --primary-button-hover: #2aa198;
+  --secondary-button-background: #859900;
+  --secondary-button-hover: #b58900;
+  --box-shadow-color: rgba(101, 123, 131, 0.10);
+  --error-color: #dc322f;
+  --error-background: #fdf6e3;
+}
+
+/* High Contrast Thema */
+[data-theme='high-contrast'] {
+  --background-color: #000000;
+  --app-background-color: #ffffff;
+  --text-color: #000000;
+  --header-background: #ffff00;
+  --border-color: #000000;
+  --primary-button-background: #000000;
+  --primary-button-hover: #333333;
+  --secondary-button-background: #ffff00;
+  --secondary-button-hover: #cccc00;
+  --box-shadow-color: rgba(0,0,0,0.25);
+  --error-color: #ff0000;
+  --error-background: #ffffff;
+}
+
+/* Kerst Thema */
+[data-theme='christmas'] {
+  --background-color: #e3f6fd;
+  --app-background-color: #ffffff;
+  --text-color: #006400;
+  --header-background: #d32f2f;
+  --border-color: #388e3c;
+  --primary-button-background: #d32f2f;
+  --primary-button-hover: #b71c1c;
+  --secondary-button-background: #388e3c;
+  --secondary-button-hover: #006400;
+  --box-shadow-color: rgba(211, 47, 47, 0.10);
+  --error-color: #b71c1c;
+  --error-background: #ffebee;
+  --header-decoration: url('/christmas-header.svg');
+  --background-decoration: url('/christmas-bg.svg');
+}
+
+/* Lente Thema */
+[data-theme='spring'] {
+  --background-color: #e8f5e9;
+  --app-background-color: #ffffff;
+  --text-color: #388e3c;
+  --header-background: #fff176;
+  --border-color: #81c784;
+  --primary-button-background: #81c784;
+  --primary-button-hover: #388e3c;
+  --secondary-button-background: #fff176;
+  --secondary-button-hover: #ffd54f;
+  --box-shadow-color: rgba(56, 142, 60, 0.10);
+  --error-color: #d32f2f;
+  --error-background: #ffebee;
+  --header-decoration: url('/spring-header.svg');
+  --background-decoration: url('/spring-bg.svg');
+}
+
+/* Zomer Thema */
+[data-theme='summer'] {
+  --background-color: #fffde7;
+  --app-background-color: #fffde7;
+  --text-color: #fbc02d;
+  --header-background: #4fc3f7;
+  --border-color: #fbc02d;
+  --primary-button-background: #fbc02d;
+  --primary-button-hover: #ffb300;
+  --secondary-button-background: #4fc3f7;
+  --secondary-button-hover: #0288d1;
+  --box-shadow-color: rgba(251, 192, 45, 0.10);
+  --error-color: #d84315;
+  --error-background: #ffe0b2;
+  --header-decoration: url('/summer-header.svg');
+  --background-decoration: url('/summer-bg.svg');
+}
+
+/* Herfst Thema */
+[data-theme='autumn'] {
+  --background-color: #fff3e0;
+  --app-background-color: #fff8e1;
+  --text-color: #2d1a00;
+  --header-background: #ffb300;
+  --border-color: #a0522d;
+  --primary-button-background: #ffb300;
+  --primary-button-hover: #ff6f00;
+  --secondary-button-background: #a0522d;
+  --secondary-button-hover: #6d4c41;
+  --box-shadow-color: rgba(160, 82, 45, 0.10);
+  --error-color: #d84315;
+  --error-background: #ffe0b2;
+  --header-decoration: url('/autumn-header.svg');
+  --background-decoration: url('/patternhead-pattern73c.svg');
+}
+
+/* Mushroom Thema */
+[data-theme='mushroom'] {
+  --background-color: #f3efe2;
+  --app-background-color: #fffaf3;
+  --text-color: #4e342e;
+  --header-background: #d7c7ad;
+  --border-color: #a1887f;
+  --primary-button-background: #c62828;
+  --primary-button-hover: #ad1d1d;
+  --secondary-button-background: #8d6e63;
+  --secondary-button-hover: #6d4c41;
+  --box-shadow-color: rgba(141, 110, 99, 0.10);
+  --error-color: #c62828;
+  --error-background: #ffe0b2;
+  --header-decoration: url('/mushroom-header.svg');
+  --background-decoration: url('/mushroom-bg.svg');
+} 
