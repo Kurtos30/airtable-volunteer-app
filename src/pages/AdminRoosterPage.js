@@ -29,7 +29,6 @@ export default function AdminRoosterPage({ user }) {
     const [editingDepartmentName, setEditingDepartmentName] = useState('');
     const [adminTab, setAdminTab] = useState('beheer'); // 'beheer' of 'bekijken'
     // Move these up from below
-    const [editBlocks, setEditBlocks] = useState([]);
     const [selectedBlocksToDelete, setSelectedBlocksToDelete] = useState([]);
     
     // Haal alle evenementen op
@@ -979,18 +978,6 @@ export default function AdminRoosterPage({ user }) {
     const afdelingColors = {};
     const colorList = ['#e57373','#64b5f6','#81c784','#ffd54f','#ba68c8','#4db6ac','#f06292','#a1887f','#90a4ae','#ff8a65','#9fa8da','#80cbc4','#ffcc02','#ab47bc','#26a69a'];
     departments.forEach((dep, i) => { afdelingColors[dep.name] = colorList[i % colorList.length]; });
-
-    // Helper: check of vrijwilliger werkt op uur
-    function getBlock(volunteer, hour) {
-      return roosterForDay.find(r => {
-        if (r.volunteer !== volunteer) return false;
-        const start = r.start ? new Date(r.start) : null;
-        const end = r.end ? new Date(r.end) : null;
-        if (!start || !end) return false;
-        const blockHour = new Date(`${selectedRoosterDate}T${hour}:00`);
-        return blockHour >= start && blockHour < end;
-      });
-    }
 
     // Helper: check of er meerdere blokken zijn voor dezelfde vrijwilliger op hetzelfde uur
     function getBlocksForHour(volunteer, hour) {
