@@ -172,641 +172,313 @@ function ProfilePage({ user, onUserUpdate }) {
     }
 
     return (
-        <div style={{
-            maxWidth: 600,
-            margin: '0 auto',
-            padding: window.innerWidth <= 700 ? '12px 8px' : '16px',
-            marginBottom: '20px',
-            background: '#fff',
-            borderRadius: '12px',
-            boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
-            width: '100%',
-            boxSizing: 'border-box'
-        }}>
+        <div className="profile-container">
             {isEditing ? (
-                <form onSubmit={handleSave} style={{ padding: window.innerWidth <= 700 ? '16px' : '24px' }}>
-                    <h1 style={{ 
-                        fontSize: window.innerWidth <= 700 ? '24px' : '32px', 
-                        marginBottom: '15px',
-                        color: '#333'
-                    }}>
-                        Profiel Bewerken
-                    </h1>
-                    <div style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        gap: window.innerWidth <= 700 ? '12px' : '16px',
-                        marginBottom: '20px'
-                    }}>
-                        <div>
-                            <label style={{
-                                display: 'block',
-                                marginBottom: '6px',
-                                fontSize: window.innerWidth <= 700 ? '14px' : '16px',
-                                fontWeight: '600',
-                                color: '#333'
-                            }}>Roepnaam</label>
-                            <input 
-                                type="text" 
-                                name="Roepnaam" 
-                                value={formData.Roepnaam} 
+                <form onSubmit={handleSave} className="profile-form">
+                    <h1>Profiel Bewerken</h1>
+                    <div className="form-fields">
+                        <label>
+                            Roepnaam:
+                            <input
+                                type="text"
+                                name="Roepnaam"
+                                value={formData.Roepnaam || ''}
                                 onChange={handleChange}
-                                style={{
-                                    width: '100%',
-                                    padding: window.innerWidth <= 700 ? '12px 16px' : '14px 16px',
-                                    fontSize: window.innerWidth <= 700 ? '16px' : '16px',
-                                    border: '2px solid #e1e5e9',
-                                    borderRadius: '8px',
-                                    boxSizing: 'border-box',
-                                    outline: 'none',
-                                    transition: 'border-color 0.3s ease'
-                                }}
-                                onFocus={(e) => e.target.style.borderColor = '#007bff'}
-                                onBlur={(e) => e.target.style.borderColor = '#e1e5e9'}
+                                required
                             />
-                        </div>
+                        </label>
                         
-                        <div>
-                            <label style={{
-                                display: 'block',
-                                marginBottom: '6px',
-                                fontSize: window.innerWidth <= 700 ? '14px' : '16px',
-                                fontWeight: '600',
-                                color: '#333'
-                            }}>Volledige Naam</label>
-                            <input 
-                                type="text" 
-                                name="Naam" 
-                                value={formData.Naam} 
-                                disabled
-                                style={{
-                                    width: '100%',
-                                    padding: window.innerWidth <= 700 ? '12px 16px' : '14px 16px',
-                                    fontSize: window.innerWidth <= 700 ? '16px' : '16px',
-                                    border: '2px solid #e1e5e9',
-                                    borderRadius: '8px',
-                                    boxSizing: 'border-box',
-                                    backgroundColor: '#f8f9fa',
-                                    color: '#6c757d'
-                                }}
-                            />
-                        </div>
-
-                        <div>
-                            <label style={{
-                                display: 'block',
-                                marginBottom: '6px',
-                                fontSize: window.innerWidth <= 700 ? '14px' : '16px',
-                                fontWeight: '600',
-                                color: '#333'
-                            }}>Email</label>
-                            <input 
-                                type="email" 
-                                name="Email Adres" 
-                                value={formData['Email Adres']} 
+                        <label>
+                            Officiële naam:
+                            <input
+                                type="text"
+                                name="Officiële naam"
+                                value={formData['Officiële naam'] || ''}
                                 onChange={handleChange}
-                                style={{
-                                    width: '100%',
-                                    padding: window.innerWidth <= 700 ? '12px 16px' : '14px 16px',
-                                    fontSize: window.innerWidth <= 700 ? '16px' : '16px',
-                                    border: '2px solid #e1e5e9',
-                                    borderRadius: '8px',
-                                    boxSizing: 'border-box',
-                                    outline: 'none',
-                                    transition: 'border-color 0.3s ease'
-                                }}
-                                onFocus={(e) => e.target.style.borderColor = '#007bff'}
-                                onBlur={(e) => e.target.style.borderColor = '#e1e5e9'}
                             />
-                        </div>
-
-                        <div>
-                            <label style={{
-                                display: 'block',
-                                marginBottom: '6px',
-                                fontSize: window.innerWidth <= 700 ? '14px' : '16px',
-                                fontWeight: '600',
-                                color: '#333'
-                            }}>Telefoon</label>
-                            <input 
-                                type="tel" 
-                                name="Telefoon nummer" 
-                                value={formData['Telefoon nummer']} 
-                                onChange={handleChange}
-                                style={{
-                                    width: '100%',
-                                    padding: window.innerWidth <= 700 ? '12px 16px' : '14px 16px',
-                                    fontSize: window.innerWidth <= 700 ? '16px' : '16px',
-                                    border: '2px solid #e1e5e9',
-                                    borderRadius: '8px',
-                                    boxSizing: 'border-box',
-                                    outline: 'none',
-                                    transition: 'border-color 0.3s ease'
-                                }}
-                                onFocus={(e) => e.target.style.borderColor = '#007bff'}
-                                onBlur={(e) => e.target.style.borderColor = '#e1e5e9'}
-                            />
-                        </div>
+                        </label>
                         
-                        <div>
-                            <label style={{
-                                display: 'block',
-                                marginBottom: '6px',
-                                fontSize: window.innerWidth <= 700 ? '14px' : '16px',
-                                fontWeight: '600',
-                                color: '#333'
-                            }}>Adres</label>
-                            <input 
-                                type="text" 
-                                name="Adres" 
-                                value={formData.Adres} 
+                        <label>
+                            Pronounce:
+                            <input
+                                type="text"
+                                name="Pronounce"
+                                value={formData['Pronounce'] || ''}
                                 onChange={handleChange}
-                                style={{
-                                    width: '100%',
-                                    padding: window.innerWidth <= 700 ? '12px 16px' : '14px 16px',
-                                    fontSize: window.innerWidth <= 700 ? '16px' : '16px',
-                                    border: '2px solid #e1e5e9',
-                                    borderRadius: '8px',
-                                    boxSizing: 'border-box',
-                                    outline: 'none',
-                                    transition: 'border-color 0.3s ease'
-                                }}
-                                onFocus={(e) => e.target.style.borderColor = '#007bff'}
-                                onBlur={(e) => e.target.style.borderColor = '#e1e5e9'}
+                                placeholder="Hij/Zij/Hen/etc."
                             />
-                        </div>
+                        </label>
                         
-                        <div>
-                            <label style={{
-                                display: 'block',
-                                marginBottom: '6px',
-                                fontSize: window.innerWidth <= 700 ? '14px' : '16px',
-                                fontWeight: '600',
-                                color: '#333'
-                            }}>Postcode</label>
-                            <input 
-                                type="text" 
-                                name="Postcode" 
-                                value={formData.Postcode} 
+                        <label>
+                            Geboortedatum:
+                            <input
+                                type="date"
+                                name="Geboortedatum"
+                                value={formData['Geboortedatum'] || ''}
                                 onChange={handleChange}
-                                style={{
-                                    width: '100%',
-                                    padding: window.innerWidth <= 700 ? '12px 16px' : '14px 16px',
-                                    fontSize: window.innerWidth <= 700 ? '16px' : '16px',
-                                    border: '2px solid #e1e5e9',
-                                    borderRadius: '8px',
-                                    boxSizing: 'border-box',
-                                    outline: 'none',
-                                    transition: 'border-color 0.3s ease'
-                                }}
-                                onFocus={(e) => e.target.style.borderColor = '#007bff'}
-                                onBlur={(e) => e.target.style.borderColor = '#e1e5e9'}
                             />
-                        </div>
+                        </label>
                         
-                        <div>
-                            <label style={{
-                                display: 'block',
-                                marginBottom: '6px',
-                                fontSize: window.innerWidth <= 700 ? '14px' : '16px',
-                                fontWeight: '600',
-                                color: '#333'
-                            }}>Stad</label>
-                            <input 
-                                type="text" 
-                                name="Stad" 
-                                value={formData.Stad} 
+                        <label>
+                            Email Adres:
+                            <input
+                                type="email"
+                                name="Email Adres"
+                                value={formData['Email Adres'] || ''}
                                 onChange={handleChange}
-                                style={{
-                                    width: '100%',
-                                    padding: window.innerWidth <= 700 ? '12px 16px' : '14px 16px',
-                                    fontSize: window.innerWidth <= 700 ? '16px' : '16px',
-                                    border: '2px solid #e1e5e9',
-                                    borderRadius: '8px',
-                                    boxSizing: 'border-box',
-                                    outline: 'none',
-                                    transition: 'border-color 0.3s ease'
-                                }}
-                                onFocus={(e) => e.target.style.borderColor = '#007bff'}
-                                onBlur={(e) => e.target.style.borderColor = '#e1e5e9'}
                             />
-                        </div>
+                        </label>
+                        
+                        <label>
+                            Telefoon nummer:
+                            <input
+                                type="tel"
+                                name="Telefoon nummer"
+                                value={formData['Telefoon nummer'] || ''}
+                                onChange={handleChange}
+                            />
+                        </label>
+                        
+                        <label>
+                            Adres:
+                            <input
+                                type="text"
+                                name="Adres"
+                                value={formData['Adres'] || ''}
+                                onChange={handleChange}
+                            />
+                        </label>
+                        
+                        <label>
+                            Postcode:
+                            <input
+                                type="text"
+                                name="Postcode"
+                                value={formData['Postcode'] || ''}
+                                onChange={handleChange}
+                            />
+                        </label>
+                        
+                        <label>
+                            Stad:
+                            <input
+                                type="text"
+                                name="Stad"
+                                value={formData['Stad'] || ''}
+                                onChange={handleChange}
+                            />
+                        </label>
+                        
+                        <label>
+                            Contactpersoon indien jonger dan 20:
+                            <input
+                                type="text"
+                                name="Contactpersoon indien jonger dan 20"
+                                value={formData['Contactpersoon indien jonger dan 20'] || ''}
+                                onChange={handleChange}
+                            />
+                        </label>
+                        
+                        <label>
+                            Rijbewijs?:
+                            <select
+                                name="Rijbewijs?"
+                                value={formData['Rijbewijs?'] || ''}
+                                onChange={handleChange}
+                            >
+                                <option value="">Selecteer...</option>
+                                <option value="Ja">Ja</option>
+                                <option value="Nee">Nee</option>
+                            </select>
+                        </label>
+                        
+                        <label>
+                            Eigen auto?:
+                            <select
+                                name="Eigen auto?"
+                                value={formData['Eigen auto?'] || ''}
+                                onChange={handleChange}
+                            >
+                                <option value="">Selecteer...</option>
+                                <option value="Ja">Ja</option>
+                                <option value="Nee">Nee</option>
+                            </select>
+                        </label>
+                        
+                        <label>
+                            Heb jij een eigen, door ons goedgekeurd, kostuum?:
+                            <select
+                                name="Heb jij een eigen, door ons goedgekeurd, kostuum?"
+                                value={formData['Heb jij een eigen, door ons goedgekeurd, kostuum?'] || ''}
+                                onChange={handleChange}
+                            >
+                                <option value="">Selecteer...</option>
+                                <option value="Ja">Ja</option>
+                                <option value="Nee">Nee</option>
+                            </select>
+                        </label>
+                        
+                        <label>
+                            Beschikbaarheid:
+                            <textarea
+                                name="Beschikbaarheid"
+                                value={formData['Beschikbaarheid'] || ''}
+                                onChange={handleChange}
+                                placeholder="Beschrijf je beschikbaarheid..."
+                                rows="3"
+                            />
+                        </label>
+                        
+                        <label>
+                            Zijn er dingen die we moeten weten met betrekking tot eten?:
+                            <textarea
+                                name="Zijn er dingen die we moeten weten met betrekking tot eten?"
+                                value={formData['Zijn er dingen die we moeten weten met betrekking tot eten?'] || ''}
+                                onChange={handleChange}
+                                placeholder="Allergieën, voorkeuren, etc."
+                                rows="3"
+                            />
+                        </label>
+                        
+                        <label>
+                            Opsomming allergiën:
+                            <textarea
+                                name="Opsomming allergiën"
+                                value={formData['Opsomming allergiën'] || ''}
+                                onChange={handleChange}
+                                placeholder="Lijst van allergieën..."
+                                rows="3"
+                            />
+                        </label>
+                        
+                        <label>
+                            Belangrijk om te weten:
+                            <textarea
+                                name="Belangrijk om te weten"
+                                value={formData['Belangrijk om te weten'] || ''}
+                                onChange={handleChange}
+                                placeholder="Andere belangrijke informatie..."
+                                rows="3"
+                            />
+                        </label>
                     </div>
-                    {error && <p style={{
-                        color: '#dc3545',
-                        fontSize: window.innerWidth <= 700 ? '14px' : '14px',
-                        textAlign: 'center',
-                        marginBottom: '16px',
-                        padding: '8px',
-                        background: '#f8d7da',
-                        borderRadius: '4px',
-                        border: '1px solid #f5c6cb'
-                    }}>{error}</p>}
-                    <div style={{
-                        display: 'flex',
-                        flexDirection: window.innerWidth <= 700 ? 'column' : 'row',
-                        gap: window.innerWidth <= 700 ? '12px' : '12px',
-                        marginTop: 24,
-                        marginBottom: '20px'
-                    }}>
-                        <button 
-                            type="submit" 
-                            disabled={loading}
-                            style={{
-                                padding: window.innerWidth <= 700 ? '14px 20px' : '12px 24px',
-                                fontSize: window.innerWidth <= 700 ? '16px' : '16px',
-                                backgroundColor: loading ? '#ccc' : '#007bff',
-                                color: 'white',
-                                border: 'none',
-                                borderRadius: '8px',
-                                cursor: loading ? 'not-allowed' : 'pointer',
-                                fontWeight: '600',
-                                transition: 'background-color 0.3s ease',
-                                flex: window.innerWidth <= 700 ? 'none' : 1
-                            }}
-                            onMouseEnter={(e) => !loading && (e.target.style.backgroundColor = '#0056b3')}
-                            onMouseLeave={(e) => !loading && (e.target.style.backgroundColor = '#007bff')}
-                        >
+                    
+                    <div className="profile-buttons">
+                        <button type="submit" disabled={loading}>
                             {loading ? 'Opslaan...' : 'Opslaan'}
                         </button>
-                        <button 
-                            type="button" 
-                            onClick={() => setIsEditing(false)}
-                            style={{
-                                padding: window.innerWidth <= 700 ? '14px 20px' : '12px 24px',
-                                fontSize: window.innerWidth <= 700 ? '16px' : '16px',
-                                backgroundColor: '#6c757d',
-                                color: 'white',
-                                border: 'none',
-                                borderRadius: '8px',
-                                cursor: 'pointer',
-                                fontWeight: '600',
-                                transition: 'background-color 0.3s ease',
-                                flex: window.innerWidth <= 700 ? 'none' : 1
-                            }}
-                            onMouseEnter={(e) => e.target.style.backgroundColor = '#5a6268'}
-                            onMouseLeave={(e) => e.target.style.backgroundColor = '#6c757d'}
-                        >
+                        <button type="button" onClick={() => setIsEditing(false)}>
                             Annuleren
                         </button>
                     </div>
+                    
+                    {error && <div className="error">{error}</div>}
                 </form>
             ) : (
-                <>
-                    <div style={{ padding: window.innerWidth <= 700 ? '16px' : '24px' }}>
-                        <h1 style={{ 
-                            fontSize: window.innerWidth <= 700 ? '24px' : '32px', 
-                            marginBottom: '15px',
-                            color: '#333'
-                        }}>
-                            Mijn Profiel
-                        </h1>
-                        <div style={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            gap: window.innerWidth <= 700 ? '16px' : '20px',
-                            marginBottom: '20px'
-                        }}>
-                            <div>
-                                <h3 style={{ 
-                                    fontSize: window.innerWidth <= 700 ? '18px' : '20px',
-                                    marginBottom: '12px',
-                                    color: '#333',
-                                    borderBottom: '2px solid #e9ecef',
-                                    paddingBottom: '8px'
-                                }}>Persoonlijke info</h3>
-                                <div style={{
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    gap: '8px'
-                                }}>
-                                    <p style={{ fontSize: window.innerWidth <= 700 ? '14px' : '16px' }}>
-                                        <strong>Officiële naam:</strong> {renderField(user['Officiële naam'])}
-                                    </p>
-                                    <p style={{ fontSize: window.innerWidth <= 700 ? '14px' : '16px' }}>
-                                        <strong>Roepnaam:</strong> {user.Roepnaam}
-                                    </p>
-                                    <p style={{ fontSize: window.innerWidth <= 700 ? '14px' : '16px' }}>
-                                        <strong>Volledige Naam:</strong> {user.Naam}
-                                    </p>
-                                    <p style={{ fontSize: window.innerWidth <= 700 ? '14px' : '16px' }}>
-                                        <strong>Geboortedatum:</strong> {user['Geboortedatum']}
-                                    </p>
-                                    <p style={{ fontSize: window.innerWidth <= 700 ? '14px' : '16px' }}>
-                                        <strong>Pronouns:</strong> {user['Pronounce']}
-                                    </p>
-                                    <p style={{ fontSize: window.innerWidth <= 700 ? '14px' : '16px' }}>
-                                        <strong>Kostuum:</strong> {renderField(user['Heb jij een eigen, door ons goedgekeurd, kostuum?'])}
-                                    </p>
-                                    <p style={{ fontSize: window.innerWidth <= 700 ? '14px' : '16px' }}>
-                                        <strong>Beschikbaarheid:</strong> {renderField(user['Beschikbaarheid'])}
-                                    </p>
-                                    <p style={{ fontSize: window.innerWidth <= 700 ? '14px' : '16px' }}>
-                                        <strong>Allergieën:</strong> {renderField(user['Opsomming allergiën'])}
-                                    </p>
-                                    <p style={{ fontSize: window.innerWidth <= 700 ? '14px' : '16px' }}>
-                                        <strong>Belangrijk om te weten:</strong> {renderField(user['Belangrijk om te weten'])}
-                                    </p>
-                                </div>
+                <div className="profile-view">
+                    <h1>Mijn Profiel</h1>
+                    
+                    {/* Profile Photo */}
+                    <div className="profile-photo-section">
+                        {user['Photo'] && user['Photo'][0] ? (
+                            <img 
+                                src={user['Photo'][0].url} 
+                                alt="Profiel foto" 
+                                className="profile-photo"
+                            />
+                        ) : (
+                            <div className="profile-photo-placeholder">
+                                📷 Geen foto
                             </div>
-
-                            {user['Photo'] && (
-                                <div style={{ textAlign: 'center' }}>
-                                    <strong style={{ fontSize: window.innerWidth <= 700 ? '14px' : '16px' }}>Foto:</strong><br/>
-                                    <img 
-                                        src={user['Photo'][0]?.url || user['Photo']} 
-                                        alt="Profiel" 
-                                        style={{
-                                            maxWidth: window.innerWidth <= 700 ? '80vw' : '60vw',
-                                            maxHeight: 180,
-                                            borderRadius: 12,
-                                            margin: '8px auto',
-                                            boxShadow: '0 4px 8px rgba(0,0,0,0.1)'
-                                        }} 
-                                    />
-                                </div>
-                            )}
-
-                            <div style={{ marginTop: 10 }}>
-                                <label style={{
-                                    display: 'block',
-                                    marginBottom: 8,
-                                    fontSize: window.innerWidth <= 700 ? '14px' : '16px',
-                                    fontWeight: '600',
-                                    color: '#333'
-                                }}>Profiel foto wijzigen:</label>
-                                <input 
-                                    type="file" 
-                                    accept="image/*" 
-                                    capture="environment" 
-                                    onChange={handlePhotoUpload} 
+                        )}
+                        
+                        <div className="photo-upload">
+                            <label className="upload-button">
+                                {uploadingPhoto ? 'Uploaden...' : 'Foto uploaden'}
+                                <input
+                                    type="file"
+                                    accept="image/*"
+                                    onChange={handlePhotoUpload}
+                                    style={{ display: 'none' }}
                                     disabled={uploadingPhoto}
-                                    style={{
-                                        width: '100%',
-                                        padding: window.innerWidth <= 700 ? '8px' : '12px',
-                                        fontSize: window.innerWidth <= 700 ? '14px' : '16px',
-                                        border: '2px solid #e1e5e9',
-                                        borderRadius: '8px',
-                                        boxSizing: 'border-box'
-                                    }}
                                 />
-                                {uploadingPhoto && (
-                                    <span style={{ 
-                                        fontSize: window.innerWidth <= 700 ? '14px' : '16px',
-                                        color: '#007bff',
-                                        marginTop: '8px',
-                                        display: 'block'
-                                    }}>
-                                        Bezig met uploaden...
-                                    </span>
-                                )}
-                            </div>
-
-                            <div>
-                                <h3 style={{ 
-                                    fontSize: window.innerWidth <= 700 ? '18px' : '20px',
-                                    marginBottom: '12px',
-                                    color: '#333',
-                                    borderBottom: '2px solid #e9ecef',
-                                    paddingBottom: '8px'
-                                }}>Contact</h3>
-                                <div style={{
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    gap: '8px'
-                                }}>
-                                    <p style={{ fontSize: window.innerWidth <= 700 ? '14px' : '16px' }}>
-                                        <strong>Email:</strong> {user['Email Adres']}
-                                    </p>
-                                    <p style={{ fontSize: window.innerWidth <= 700 ? '14px' : '16px' }}>
-                                        <strong>Telefoon:</strong> {user['Telefoon nummer']}
-                                    </p>
-                                    <p style={{ fontSize: window.innerWidth <= 700 ? '14px' : '16px' }}>
-                                        <strong>Adres:</strong> {user.Adres}, {user.Postcode} {user.Stad}
-                                    </p>
-                                    <p style={{ fontSize: window.innerWidth <= 700 ? '14px' : '16px' }}>
-                                        <strong>Contactpersoon indien jonger dan 20:</strong> {renderField(user['Contactpersoon indien jonger dan 20'])}
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div>
-                                <h3 style={{ 
-                                    fontSize: window.innerWidth <= 700 ? '18px' : '20px',
-                                    marginBottom: '12px',
-                                    color: '#333',
-                                    borderBottom: '2px solid #e9ecef',
-                                    paddingBottom: '8px'
-                                }}>Overig</h3>
-                                <div style={{
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    gap: '8px'
-                                }}>
-                                    <p style={{ fontSize: window.innerWidth <= 700 ? '14px' : '16px' }}>
-                                        <strong>Rijbewijs:</strong> {renderField(user['Rijbewijs?'])}
-                                    </p>
-                                    <p style={{ fontSize: window.innerWidth <= 700 ? '14px' : '16px' }}>
-                                        <strong>Eigen auto:</strong> {renderField(user['Eigen auto?'])}
-                                    </p>
-                                    <p style={{ fontSize: window.innerWidth <= 700 ? '14px' : '16px' }}>
-                                        <strong>Zijn er dingen die we moeten weten met betrekking tot eten?</strong> {renderField(user['Zijn er dingen die we moeten weten met betrekking tot eten?'])}
-                                    </p>
-                                </div>
-                            </div>
+                            </label>
                         </div>
                     </div>
-
-                    <div style={{
-                        marginBottom: '20px',
-                        padding: window.innerWidth <= 700 ? '16px' : '24px',
-                        background: '#f8f9fa',
-                        borderRadius: '8px',
-                        border: '1px solid #e9ecef'
-                    }}>
-                        <label htmlFor="theme-select" style={{
-                            display: 'block',
-                            marginBottom: '8px',
-                            fontSize: window.innerWidth <= 700 ? '14px' : '16px',
-                            fontWeight: '600',
-                            color: '#333'
-                        }}>Thema:</label>
-                        <select 
-                            id="theme-select" 
-                            value={theme} 
-                            onChange={(e) => setTheme(e.target.value)}
-                            style={{
-                                width: '100%',
-                                padding: window.innerWidth <= 700 ? '12px 16px' : '14px 16px',
-                                fontSize: window.innerWidth <= 700 ? '16px' : '16px',
-                                border: '2px solid #e1e5e9',
-                                borderRadius: '8px',
-                                boxSizing: 'border-box',
-                                outline: 'none',
-                                transition: 'border-color 0.3s ease'
-                            }}
-                            onFocus={(e) => e.target.style.borderColor = '#007bff'}
-                            onBlur={(e) => e.target.style.borderColor = '#e1e5e9'}
-                        >
-                            <option value="light">Licht</option>
-                            <option value="dark">Donker</option>
-                            <option value="nature">Natuur</option>
-                            <option value="cyberpunk">Cyberpunk</option>
-                            <option value="ocean">Oceaan</option>
-                            <option value="retro">Retro</option>
-                            <option value="pastel">Pastel</option>
-                            <option value="halloween">Halloween</option>
-                            <option value="solarized">Solarized</option>
-                            <option value="high-contrast">High Contrast</option>
-                            <option value="christmas">Kerst</option>
-                            <option value="spring">Lente</option>
-                            <option value="summer">Zomer</option>
-                            <option value="autumn">Herfst</option>
-                            <option value="mushroom">Mushroom</option>
-                        </select>
+                    
+                    {/* Profile Details */}
+                    <div className="profile-details">
+                        <p><strong>Naam:</strong> {renderField(user.Naam)}</p>
+                        <p><strong>Roepnaam:</strong> {renderField(user.Roepnaam)}</p>
+                        <p><strong>Officiële naam:</strong> {renderField(user['Officiële naam'])}</p>
+                        <p><strong>Pronounce:</strong> {renderField(user['Pronounce'])}</p>
+                        <p><strong>Geboortedatum:</strong> {renderField(user['Geboortedatum'])}</p>
+                        <p><strong>Email:</strong> {renderField(user['Email Adres'])}</p>
+                        <p><strong>Telefoon:</strong> {renderField(user['Telefoon nummer'])}</p>
+                        <p><strong>Adres:</strong> {renderField(user.Adres)}</p>
+                        <p><strong>Postcode:</strong> {renderField(user.Postcode)}</p>
+                        <p><strong>Stad:</strong> {renderField(user.Stad)}</p>
+                        <p><strong>Contactpersoon indien jonger dan 20:</strong> {renderField(user['Contactpersoon indien jonger dan 20'])}</p>
+                        <p><strong>Rijbewijs:</strong> {renderField(user['Rijbewijs?'])}</p>
+                        <p><strong>Eigen auto:</strong> {renderField(user['Eigen auto?'])}</p>
+                        <p><strong>Eigen kostuum:</strong> {renderField(user['Heb jij een eigen, door ons goedgekeurd, kostuum?'])}</p>
+                        <p><strong>Beschikbaarheid:</strong> {renderField(user['Beschikbaarheid'])}</p>
+                        <p><strong>Eetwensen:</strong> {renderField(user['Zijn er dingen die we moeten weten met betrekking tot eten?'])}</p>
+                        <p><strong>Allergieën:</strong> {renderField(user['Opsomming allergiën'])}</p>
+                        <p><strong>Belangrijk om te weten:</strong> {renderField(user['Belangrijk om te weten'])}</p>
                     </div>
-
-                    <div style={{
-                        marginBottom: '20px',
-                        padding: window.innerWidth <= 700 ? '16px' : '24px'
-                    }}>
-                        <h2 style={{ 
-                            fontSize: window.innerWidth <= 700 ? '20px' : '24px',
-                            marginBottom: '16px',
-                            color: '#333'
-                        }}>Mijn Inschrijvingen</h2>
-                        {eventsLoading ? (
-                            <p style={{
-                                fontSize: window.innerWidth <= 700 ? '14px' : '16px',
-                                color: '#666',
-                                textAlign: 'center',
-                                padding: '20px'
-                            }}>Inschrijvingen laden...</p>
-                        ) : registeredEvents.length > 0 ? (
-                            <div style={{
-                                display: 'flex',
-                                flexDirection: 'column',
-                                gap: '12px'
-                            }}>
-                                {registeredEvents.map(event => {
-                                    const startDate = new Date(event['Evenement Start datum']);
-                                    const endDate = event['Evenement Eind datum'] ? new Date(event['Evenement Eind datum']) : startDate;
-                                    const isMultiDay = startDate.toDateString() !== endDate.toDateString();
-                                    
-                                    return (
-                                        <div key={event.id} style={{
-                                            background: 'white',
-                                            border: '1px solid #e9ecef',
-                                            borderRadius: '8px',
-                                            padding: window.innerWidth <= 700 ? '16px' : '20px',
-                                            boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
-                                        }}>
-                                            <h3 style={{
-                                                fontSize: window.innerWidth <= 700 ? '16px' : '18px',
-                                                marginBottom: '8px',
-                                                color: '#333',
-                                                fontWeight: '600'
-                                            }}>{event.Evenement}</h3>
-                                            <p style={{
-                                                fontSize: window.innerWidth <= 700 ? '14px' : '16px',
-                                                color: '#666',
-                                                marginBottom: '8px'
-                                            }}>
-                                                {isMultiDay 
-                                                    ? `${startDate.toLocaleDateString('nl-NL')} - ${endDate.toLocaleDateString('nl-NL')}`
-                                                    : startDate.toLocaleDateString('nl-NL', { 
-                                                        weekday: 'long', 
-                                                        year: 'numeric', 
-                                                        month: 'long', 
-                                                        day: 'numeric' 
-                                                    })
-                                                }
-                                            </p>
-                                            <button 
-                                                onClick={() => handleUnregister(event.id)}
-                                                style={{
-                                                    padding: window.innerWidth <= 700 ? '8px 16px' : '10px 20px',
-                                                    fontSize: window.innerWidth <= 700 ? '14px' : '16px',
-                                                    backgroundColor: '#dc3545',
-                                                    color: 'white',
-                                                    border: 'none',
-                                                    borderRadius: '6px',
-                                                    cursor: 'pointer',
-                                                    fontWeight: '500',
-                                                    transition: 'background-color 0.3s ease'
-                                                }}
-                                                onMouseEnter={(e) => e.target.style.backgroundColor = '#c82333'}
-                                                onMouseLeave={(e) => e.target.style.backgroundColor = '#dc3545'}
-                                            >
-                                                Uitschrijven
-                                            </button>
-                                        </div>
-                                    );
-                                })}
-                            </div>
-                        ) : (
-                            <p style={{
-                                fontSize: window.innerWidth <= 700 ? '14px' : '16px',
-                                color: '#666',
-                                textAlign: 'center',
-                                padding: '20px',
-                                background: '#f8f9fa',
-                                borderRadius: '8px',
-                                border: '1px solid #e9ecef'
-                            }}>
-                                Je bent nog niet ingeschreven voor evenementen.
-                            </p>
-                        )}
+                    
+                    {/* Theme Selector */}
+                    <div className="theme-selector">
+                        <label>
+                            Thema:
+                            <select value={theme} onChange={(e) => setTheme(e.target.value)}>
+                                <option value="light">Licht</option>
+                                <option value="dark">Donker</option>
+                                <option value="christmas">Kerst</option>
+                                <option value="summer">Zomer</option>
+                            </select>
+                        </label>
                     </div>
-
-                    <div style={{
-                        display: 'flex',
-                        flexDirection: window.innerWidth <= 700 ? 'column' : 'row',
-                        gap: window.innerWidth <= 700 ? '12px' : '16px',
-                        marginTop: '24px',
-                        padding: window.innerWidth <= 700 ? '16px' : '24px'
-                    }}>
-                        <button 
-                            onClick={() => setIsEditing(true)}
-                            style={{
-                                padding: window.innerWidth <= 700 ? '14px 20px' : '12px 24px',
-                                fontSize: window.innerWidth <= 700 ? '16px' : '16px',
-                                backgroundColor: '#007bff',
-                                color: 'white',
-                                border: 'none',
-                                borderRadius: '8px',
-                                cursor: 'pointer',
-                                fontWeight: '600',
-                                transition: 'background-color 0.3s ease',
-                                flex: window.innerWidth <= 700 ? 'none' : 1
-                            }}
-                            onMouseEnter={(e) => e.target.style.backgroundColor = '#0056b3'}
-                            onMouseLeave={(e) => e.target.style.backgroundColor = '#007bff'}
-                        >
+                    
+                    {/* Action Buttons */}
+                    <div className="profile-buttons">
+                        <button onClick={() => setIsEditing(true)}>
                             Profiel Bewerken
                         </button>
-                        <Link to="/" style={{
-                            padding: window.innerWidth <= 700 ? '14px 20px' : '12px 24px',
-                            fontSize: window.innerWidth <= 700 ? '16px' : '16px',
-                            backgroundColor: '#6c757d',
-                            color: 'white',
-                            textDecoration: 'none',
-                            border: 'none',
-                            borderRadius: '8px',
-                            cursor: 'pointer',
-                            fontWeight: '600',
-                            transition: 'background-color 0.3s ease',
-                            flex: window.innerWidth <= 700 ? 'none' : 1,
-                            textAlign: 'center',
-                            display: 'block'
-                        }}
-                        onMouseEnter={(e) => e.target.style.backgroundColor = '#5a6268'}
-                        onMouseLeave={(e) => e.target.style.backgroundColor = '#6c757d'}
-                        >
+                        <Link to="/" className="nav-button-secondary">
                             Terug naar Home
                         </Link>
                     </div>
-                </>
+                    
+                    {/* Registered Events */}
+                    <div className="registered-events">
+                        <h2>Mijn Inschrijvingen</h2>
+                        {eventsLoading ? (
+                            <p>Laden...</p>
+                        ) : registeredEvents.length > 0 ? (
+                            <ul>
+                                {registeredEvents.map(event => (
+                                    <li key={event.id}>
+                                        <strong>{event.Evenement || event.Event || event.Naam || 'Onbekend evenement'}</strong>
+                                        <br />
+                                        <small>
+                                            {event['Evenement Start datum'] || event['Start datum'] || event['Start Date'] || event['Start'] || 'Geen datum'}
+                                        </small>
+                                        <button 
+                                            onClick={() => handleUnregister(event.id)}
+                                            className="unregister-button"
+                                        >
+                                            Uitschrijven
+                                        </button>
+                                    </li>
+                                ))}
+                            </ul>
+                        ) : (
+                            <p>Je bent nog niet ingeschreven voor evenementen.</p>
+                        )}
+                    </div>
+                </div>
             )}
             {confirmUnregister && (
                 <div className="modal-overlay"><div className="modal" style={{width:'95vw',maxWidth:400}}><p>Weet je zeker dat je je wilt uitschrijven voor het evenement "{registeredEvents.find(event => event.id === confirmUnregister)?.Evenement}"?</p><button onClick={() => handleUnregister(confirmUnregister)}>Ja, uitschrijven</button><button onClick={() => setConfirmUnregister(null)}>Annuleren</button></div></div>

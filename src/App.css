@@ -2,100 +2,332 @@
 body, html {
   margin: 0;
   padding: 0;
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   font-size: 16px;
   box-sizing: border-box;
   overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Ensure proper viewport handling */
+* {
+  box-sizing: border-box;
 }
 
 .app-container {
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   padding: 0;
   margin: 0;
   background: var(--background-color);
-  padding-bottom: 20px; /* Add bottom padding since footer is removed */
+  padding-bottom: 20px;
+  overflow-x: hidden;
 }
 
 .home-container, .profile-container, .modal, .team-roster {
-  width: 100vw;
-  max-width: 100vw;
-  padding: 0 8px;
+  width: 100%;
+  max-width: 100%;
+  padding: 0 16px;
   box-sizing: border-box;
-  margin-bottom: 20px; /* Add bottom margin for better spacing */
+  margin-bottom: 20px;
 }
 
 /* Mobile-specific improvements */
-@media (max-width: 700px) {
+@media (max-width: 768px) {
+  body, html {
+    font-size: 14px;
+  }
+  
   .app-container {
     padding-bottom: 10px;
   }
   
   .home-container, .profile-container, .modal, .team-roster {
-    padding: 0 4px;
+    padding: 0 12px;
     margin-bottom: 10px;
+  }
+  
+  .home-container {
+    padding: 16px;
+    min-height: 100vh;
+  }
+  
+  .home-box {
+    padding: 24px 20px;
+    max-width: 100%;
+  }
+  
+  .home-box h1 {
+    font-size: 24px;
+  }
+  
+  .home-box p {
+    font-size: 16px;
+    margin-bottom: 24px;
   }
   
   .App {
     padding: 8px;
     margin: 0;
+    max-width: 100%;
+  }
+  
+  /* Calendar page mobile improvements */
+  .calendar-page {
+    padding: 8px;
+  }
+  
+  .calendar-page h1 {
+    font-size: 24px;
+  }
+  
+  .calendar-page p {
+    font-size: 14px;
+  }
+  
+  .admin-navigation {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .admin-navigation .nav-button {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .calendar-container {
+    height: 60vh;
+    padding: 5px;
+  }
+  
+  .debug-info {
+    font-size: 11px;
+    padding: 12px;
+  }
+  
+  .field-tag {
+    font-size: 10px;
+    padding: 1px 4px;
+  }
+  
+  .sample-record {
+    font-size: 10px;
+    max-height: 150px;
+  }
+  
+  /* Profile page mobile improvements */
+  .profile-form,
+  .profile-view {
+    padding: 16px;
+  }
+  
+  .profile-form h1,
+  .profile-view h1 {
+    font-size: 24px;
+  }
+  
+  .form-fields {
+    gap: 12px;
+  }
+  
+  .form-fields label {
+    font-size: 14px;
+  }
+  
+  .form-fields input,
+  .form-fields select,
+  .form-fields textarea {
+    padding: 12px;
+    font-size: 16px;
+  }
+  
+  .profile-photo {
+    max-width: 150px;
+    max-height: 150px;
+  }
+  
+  .profile-photo-placeholder {
+    width: 150px;
+    height: 150px;
+    font-size: 14px;
+  }
+  
+  .profile-details p {
+    font-size: 14px;
+  }
+  
+  .registered-events h2 {
+    font-size: 20px;
+  }
+  
+  .registered-events li {
+    padding: 12px;
   }
   
   /* Better mobile table handling */
   table {
-    font-size: 14px;
+    font-size: 12px;
+    width: 100%;
+    min-width: 100%;
   }
   
   .team-roster th, .team-roster td {
-    padding: 4px 2px;
+    padding: 6px 4px;
+    word-wrap: break-word;
+    max-width: 120px;
   }
   
   /* Mobile-friendly buttons */
   .nav-button, .nav-button-secondary, button {
-    padding: 12px 16px;
+    padding: 14px 16px;
     font-size: 16px;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
+    min-height: 44px; /* Better touch target */
+    width: 100%;
   }
   
   /* Mobile-friendly inputs */
   input, select, textarea {
-    padding: 10px;
-    font-size: 16px;
-    margin-bottom: 10px;
+    padding: 12px;
+    font-size: 16px; /* Prevents zoom on iOS */
+    margin-bottom: 12px;
+    min-height: 44px;
   }
   
   /* Mobile modal improvements */
   .modal {
-    width: 98vw;
-    padding: 12px;
-    margin: 10px;
+    width: 95%;
+    max-width: 95%;
+    padding: 16px;
+    margin: 10px auto;
+    border-radius: 8px;
+  }
+  
+  .modal-content {
+    padding: 20px;
+    width: 100%;
+    max-width: 100%;
   }
   
   /* Mobile profile improvements */
   .profile-container {
-    padding: 12px 8px;
+    padding: 16px 12px;
     margin: 10px auto;
   }
   
   .profile-details p {
     font-size: 14px;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
+    word-wrap: break-word;
   }
   
   /* Mobile calendar improvements */
   .rbc-calendar {
-    font-size: 14px;
+    font-size: 12px;
+    height: 400px !important;
   }
   
   .rbc-header {
-    padding: 4px 2px;
-    font-size: 12px;
+    padding: 6px 2px;
+    font-size: 11px;
+    word-wrap: break-word;
   }
   
   .rbc-event {
-    font-size: 12px;
+    font-size: 10px;
     padding: 2px 4px;
+    word-wrap: break-word;
+  }
+  
+  .rbc-toolbar {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .rbc-toolbar button {
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+  
+  /* Mobile navigation improvements */
+  .home-navigation {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+  
+  /* Mobile login improvements */
+  .login-container {
+    padding: 16px;
+  }
+  
+  .login-box {
+    padding: 24px 16px;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  /* Mobile header improvements */
+  .header {
+    padding: 8px 12px;
+    flex-wrap: wrap;
+  }
+  
+  .header p {
+    font-size: 14px;
+    margin-right: 8px;
+  }
+  
+  /* Mobile form improvements */
+  .profile-details input,
+  .profile-details select,
+  .profile-details textarea {
+    font-size: 16px;
+    padding: 12px;
+    margin-bottom: 12px;
+  }
+  
+  /* Mobile button groups */
+  .profile-buttons,
+  .modal-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .profile-buttons button,
+  .modal-actions button {
+    width: 100%;
+  }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 480px) {
+  .home-container, .profile-container, .modal, .team-roster {
+    padding: 0 8px;
+  }
+  
+  .App {
+    padding: 4px;
+  }
+  
+  .team-roster th, .team-roster td {
+    padding: 4px 2px;
+    font-size: 11px;
+  }
+  
+  .rbc-calendar {
+    font-size: 10px;
+    height: 350px !important;
+  }
+  
+  .rbc-header {
+    font-size: 10px;
+  }
+  
+  .rbc-event {
+    font-size: 9px;
   }
 }
 
@@ -149,6 +381,23 @@ thead, tbody, tr {
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   }
+  
+  .home-container {
+    margin: 0 auto;
+    padding: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .home-box {
+    max-width: 500px;
+    margin: 0;
+    padding: 40px;
+  }
+  
   .home-navigation {
     flex-direction: row;
     gap: 20px;
@@ -337,32 +586,73 @@ button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 50px;
+    min-height: 100vh;
+    padding: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
 .home-box {
     text-align: center;
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
+}
+
+.home-box h1 {
+    font-size: 32px;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.home-box p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 32px;
 }
 
 .home-navigation {
     display: flex;
-    gap: 20px;
-    margin-top: 30px;
+    gap: 16px;
+    justify-content: center;
 }
 
 .nav-button {
     display: block;
-    padding: 20px 40px;
-    background-color: var(--primary-button-background);
+    padding: 20px 24px;
+    background-color: #007bff;
     color: white;
     text-decoration: none;
     border-radius: 8px;
     font-size: 18px;
-    transition: background-color 0.3s;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    min-width: 180px;
+}
+
+.nav-button:nth-child(2) {
+    background-color: #28a745;
+}
+
+.nav-button:nth-child(2):hover {
+    background-color: #218838;
+}
+
+.nav-button:nth-child(3) {
+    background-color: #6f42c1;
+}
+
+.nav-button:nth-child(3):hover {
+    background-color: #5a32a3;
 }
 
 .nav-button:hover {
-    background-color: var(--primary-button-hover);
+    background-color: #0056b3;
 }
 
 .profile-container {
@@ -627,3 +917,309 @@ button:hover {
     font-weight: bold;
   }
 } */ 
+
+/* Calendar Page Styles */
+.calendar-page {
+  max-width: 100%;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.calendar-page h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.calendar-page p {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.admin-hint {
+  display: block;
+  margin-top: 5px;
+  color: #007bff;
+  font-size: 14px;
+}
+
+.admin-navigation {
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.calendar-container {
+  height: 70vh;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+/* Debug Info Styles */
+.debug-info {
+  background: #e3f2fd;
+  padding: 15px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  font-size: 12px;
+}
+
+.debug-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.debug-section {
+  margin-bottom: 10px;
+}
+
+.field-list {
+  margin-top: 5px;
+}
+
+.field-tag {
+  display: inline-block;
+  background: #fff;
+  padding: 2px 6px;
+  margin: 2px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}
+
+.sample-record {
+  background: #fff;
+  padding: 10px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  font-size: 11px;
+  overflow: auto;
+  max-height: 200px;
+}
+
+.error-message {
+  color: #d32f2f;
+  margin-top: 5px;
+}
+
+.events-analysis {
+  margin-top: 10px;
+  padding: 10px;
+  background: #fff;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+} 
+
+/* Profile Page Styles */
+.profile-form {
+  padding: 24px;
+}
+
+.profile-form h1 {
+  font-size: 32px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.form-fields label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.form-fields input,
+.form-fields select,
+.form-fields textarea {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 16px;
+  border: 2px solid #e1e5e9;
+  border-radius: 8px;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.form-fields input:focus,
+.form-fields select:focus,
+.form-fields textarea:focus {
+  border-color: #007bff;
+}
+
+.form-fields textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.profile-view {
+  padding: 24px;
+}
+
+.profile-view h1 {
+  font-size: 32px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.profile-photo-section {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.profile-photo {
+  max-width: 200px;
+  max-height: 200px;
+  border-radius: 12px;
+  margin: 8px auto;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.profile-photo-placeholder {
+  width: 200px;
+  height: 200px;
+  border: 2px dashed #ccc;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 8px auto;
+  background: #f8f9fa;
+  color: #666;
+  font-size: 16px;
+}
+
+.photo-upload {
+  margin-top: 16px;
+}
+
+.upload-button {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.upload-button:hover {
+  background-color: #0056b3;
+}
+
+.profile-details {
+  margin-bottom: 24px;
+}
+
+.profile-details p {
+  font-size: 16px;
+  line-height: 1.6;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  word-wrap: break-word;
+}
+
+.profile-details p:last-child {
+  border-bottom: none;
+}
+
+.profile-details strong {
+  color: #333;
+  font-weight: 600;
+}
+
+.theme-selector {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
+}
+
+.theme-selector label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.theme-selector select {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 2px solid #e1e5e9;
+  border-radius: 8px;
+  background-color: var(--app-background-color);
+  color: var(--text-color);
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.theme-selector select:focus {
+  border-color: #007bff;
+}
+
+.registered-events {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
+}
+
+.registered-events h2 {
+  margin-bottom: 15px;
+  font-size: 24px;
+  color: #333;
+}
+
+.registered-events ul {
+  list-style: none;
+  padding: 0;
+}
+
+.registered-events li {
+  margin-bottom: 15px;
+  padding: 16px;
+  background: var(--app-background-color);
+  border-radius: 8px;
+  border-left: 4px solid var(--primary-button-background);
+  word-wrap: break-word;
+}
+
+.registered-events strong {
+  display: block;
+  margin-bottom: 4px;
+  color: #333;
+}
+
+.registered-events small {
+  color: #666;
+  font-size: 14px;
+}
+
+.unregister-button {
+  margin-top: 8px;
+  padding: 8px 16px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.unregister-button:hover {
+  background-color: #c82333;
+} 

@@ -225,14 +225,10 @@ function CalendarPage({ user, onUserUpdate }) {
   if (error) return <div className="error">{error}</div>;
 
   return (
-    <div className="App" style={{ 
-      maxWidth: '100%', 
-      padding: window.innerWidth <= 700 ? '8px' : '16px', 
-      marginBottom: '20px' 
-    }}>
+    <div className="App calendar-page">
       {/* Admin Navigation */}
       {user && user.isAdmin && (
-        <div style={{ marginBottom: '20px', display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+        <div className="admin-navigation">
           <Link to="/admin" className="nav-button">🏠 Admin Dashboard</Link>
           <Link to="/admin/add-event" className="nav-button">➕ Nieuw evenement</Link>
           <Link to="/admin/events" className="nav-button">📋 Alle evenementen</Link>
@@ -240,13 +236,11 @@ function CalendarPage({ user, onUserUpdate }) {
         </div>
       )}
       
-      <h1 style={{ fontSize: window.innerWidth <= 700 ? '24px' : '32px', marginBottom: '10px' }}>
-        Evenementen Kalender
-      </h1>
-      <p style={{ fontSize: window.innerWidth <= 700 ? '14px' : '16px', marginBottom: '15px' }}>
+      <h1>Evenementen Kalender</h1>
+      <p>
         Welkom, {user.Roepnaam}! Klik op een evenement voor details en om je in te schrijven.
         {user.isAdmin && (
-          <span style={{ display: 'block', marginTop: '5px', color: '#007bff', fontSize: '14px' }}>
+          <span className="admin-hint">
             💡 Als admin kun je evenementen toevoegen via de knoppen hierboven.
           </span>
         )}
@@ -254,50 +248,29 @@ function CalendarPage({ user, onUserUpdate }) {
 
       {/* Debug Info for Admins */}
       {user && user.isAdmin && debugInfo && (
-        <div style={{ 
-          background: '#e3f2fd', 
-          padding: '15px', 
-          borderRadius: '4px', 
-          marginBottom: '15px',
-          fontSize: '12px'
-        }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+        <div className="debug-info">
+          <div className="debug-header">
             <strong>Debug: Evenementen Tabel Info</strong>
           </div>
           
-          <div style={{ marginBottom: '10px' }}>
+          <div className="debug-section">
             <strong>Totaal records in tabel:</strong> {debugInfo.totalRecords}
           </div>
           
-          <div style={{ marginBottom: '10px' }}>
+          <div className="debug-section">
             <strong>Beschikbare velden ({debugInfo.availableFields.length}):</strong>
-            <div style={{ marginTop: '5px' }}>
+            <div className="field-list">
               {debugInfo.availableFields.map((field, index) => (
-                <span key={index} style={{ 
-                  display: 'inline-block', 
-                  background: '#fff', 
-                  padding: '2px 6px', 
-                  margin: '2px', 
-                  borderRadius: '3px',
-                  border: '1px solid #ccc'
-                }}>
+                <span key={index} className="field-tag">
                   "{field}"
                 </span>
               ))}
             </div>
           </div>
           
-          <div style={{ marginBottom: '10px' }}>
+          <div className="debug-section">
             <strong>Voorbeeld record:</strong>
-            <pre style={{ 
-              background: '#fff', 
-              padding: '10px', 
-              borderRadius: '3px',
-              border: '1px solid #ccc',
-              fontSize: '11px',
-              overflow: 'auto',
-              maxHeight: '200px'
-            }}>
+            <pre className="sample-record">
               {JSON.stringify(debugInfo.sampleRecord, null, 2)}
             </pre>
           </div>
@@ -305,18 +278,18 @@ function CalendarPage({ user, onUserUpdate }) {
           <div>
             <strong>Evenementen gevonden voor kalender:</strong> {agendaItems.length}
             {agendaItems.length === 0 && (
-              <div style={{ color: '#d32f2f', marginTop: '5px' }}>
+              <div className="error-message">
                 ⚠️ Geen evenementen gevonden! Controleer de veldnamen in je Airtable tabel.
               </div>
             )}
           </div>
           
-          <div style={{ marginTop: '10px', padding: '10px', background: '#fff', borderRadius: '3px', border: '1px solid #ccc' }}>
+          <div className="events-analysis">
             <strong>Evenementen analyse:</strong>
             <div>• Evenementen met geldige datums: {debugInfo.eventsWithValidDates}</div>
             <div>• Evenementen zonder geldige datums: {debugInfo.eventsWithoutValidDates}</div>
             {debugInfo.eventsWithoutValidDates > 0 && (
-              <div style={{ color: '#d32f2f', marginTop: '5px', fontSize: '11px' }}>
+              <div className="error-message">
                 ⚠️ {debugInfo.eventsWithoutValidDates} evenement(en) hebben geen geldige start- of einddatum velden.
               </div>
             )}
@@ -324,11 +297,7 @@ function CalendarPage({ user, onUserUpdate }) {
         </div>
       )}
       
-      <div style={{ 
-        height: window.innerWidth <= 700 ? '60vh' : '70vh', 
-        padding: window.innerWidth <= 700 ? '5px' : '10px', 
-        marginBottom: '20px' 
-      }}>
+      <div className="calendar-container">
         <Calendar
           localizer={localizer}
           events={agendaItems}
