@@ -100,6 +100,16 @@ body, html {
   .calendar-container {
     height: 60vh;
     padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: white;
+    overflow: hidden;
+  }
+  
+  .calendar-container .rbc-calendar {
+    height: 100% !important;
+    width: 100% !important;
+    display: block !important;
   }
   
   .debug-info {
@@ -523,6 +533,8 @@ body {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
+  min-height: 100vh;
+  background: var(--background-color);
 }
 
 .agenda-list {
@@ -995,6 +1007,8 @@ button:hover {
   max-width: 100%;
   padding: 16px;
   margin-bottom: 20px;
+  min-height: 100vh;
+  background: var(--background-color);
 }
 
 .calendar-page h1 {
@@ -1025,9 +1039,27 @@ button:hover {
   height: 70vh;
   padding: 10px;
   margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: white;
+  overflow: hidden;
+}
+
+/* Ensure the calendar component itself is visible */
+.calendar-container .rbc-calendar {
+  height: 100% !important;
+  width: 100% !important;
+  display: block !important;
 }
 
 /* React Big Calendar Custom Styles */
+.rbc-calendar {
+  height: 100% !important;
+  width: 100% !important;
+  display: block !important;
+  font-family: inherit !important;
+}
+
 .rbc-toolbar {
   display: flex;
   flex-wrap: wrap;
