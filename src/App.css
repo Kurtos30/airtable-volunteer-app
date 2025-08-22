@@ -244,11 +244,41 @@ body, html {
   .rbc-toolbar {
     flex-direction: column;
     gap: 8px;
+    align-items: stretch;
   }
   
-  .rbc-toolbar button {
-    font-size: 12px;
-    padding: 6px 8px;
+  .rbc-toolbar-label {
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+  
+  .rbc-btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    justify-content: center;
+  }
+  
+  .rbc-btn-group button {
+    font-size: 14px;
+    padding: 10px 8px;
+    min-width: 70px;
+    min-height: 44px;
+    flex: 1;
+    max-width: 120px;
+  }
+  
+  .rbc-btn-group button:first-child {
+    border-radius: 4px;
+  }
+  
+  .rbc-btn-group button:last-child {
+    border-radius: 4px;
+  }
+  
+  .rbc-btn-group button:not(:first-child) {
+    border-left: 1px solid #ddd;
   }
   
   /* Mobile navigation improvements */
@@ -328,6 +358,28 @@ body, html {
   
   .rbc-event {
     font-size: 9px;
+  }
+  
+  /* Extra small calendar toolbar */
+  .rbc-toolbar {
+    gap: 6px;
+  }
+  
+  .rbc-toolbar-label {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+  
+  .rbc-btn-group {
+    gap: 2px;
+  }
+  
+  .rbc-btn-group button {
+    font-size: 12px;
+    padding: 8px 6px;
+    min-width: 60px;
+    min-height: 40px;
+    max-width: 100px;
   }
 }
 
@@ -414,6 +466,25 @@ thead, tbody, tr {
     font-size: 18px;
     padding: 10px;
     margin-bottom: 10px;
+  }
+  
+  /* Desktop calendar improvements */
+  .rbc-toolbar {
+    flex-direction: row;
+    gap: 15px;
+    align-items: center;
+  }
+  
+  .rbc-toolbar-label {
+    font-size: 20px;
+    margin-bottom: 0;
+  }
+  
+  .rbc-btn-group button {
+    font-size: 14px;
+    padding: 10px 16px;
+    min-width: 80px;
+    min-height: 40px;
   }
 }
 
@@ -953,6 +1024,65 @@ button:hover {
   height: 70vh;
   padding: 10px;
   margin-bottom: 20px;
+}
+
+/* React Big Calendar Custom Styles */
+.rbc-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  gap: 10px;
+}
+
+.rbc-toolbar-label {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.rbc-btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+}
+
+.rbc-btn-group button {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  background: white;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 60px;
+  text-align: center;
+}
+
+.rbc-btn-group button:hover {
+  background: #f0f0f0;
+  border-color: #999;
+}
+
+.rbc-btn-group button.rbc-active {
+  background: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.rbc-btn-group button:first-child {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.rbc-btn-group button:last-child {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.rbc-btn-group button:not(:first-child) {
+  border-left: none;
 }
 
 /* Debug Info Styles */
