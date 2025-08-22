@@ -179,9 +179,9 @@ function ProfilePage({ user, onUserUpdate }) {
                     <div className="form-fields">
                         <label>
                             Roepnaam:
-                            <input
-                                type="text"
-                                name="Roepnaam"
+                            <input 
+                                type="text" 
+                                name="Roepnaam" 
                                 value={formData.Roepnaam || ''}
                                 onChange={handleChange}
                                 required
@@ -200,8 +200,8 @@ function ProfilePage({ user, onUserUpdate }) {
                         
                         <label>
                             Pronounce:
-                            <input
-                                type="text"
+                            <input 
+                                type="text" 
                                 name="Pronounce"
                                 value={formData['Pronounce'] || ''}
                                 onChange={handleChange}
@@ -221,9 +221,9 @@ function ProfilePage({ user, onUserUpdate }) {
                         
                         <label>
                             Email Adres:
-                            <input
-                                type="email"
-                                name="Email Adres"
+                            <input 
+                                type="email" 
+                                name="Email Adres" 
                                 value={formData['Email Adres'] || ''}
                                 onChange={handleChange}
                             />
@@ -231,9 +231,9 @@ function ProfilePage({ user, onUserUpdate }) {
                         
                         <label>
                             Telefoon nummer:
-                            <input
-                                type="tel"
-                                name="Telefoon nummer"
+                            <input 
+                                type="tel" 
+                                name="Telefoon nummer" 
                                 value={formData['Telefoon nummer'] || ''}
                                 onChange={handleChange}
                             />
@@ -241,9 +241,9 @@ function ProfilePage({ user, onUserUpdate }) {
                         
                         <label>
                             Adres:
-                            <input
-                                type="text"
-                                name="Adres"
+                            <input 
+                                type="text" 
+                                name="Adres" 
                                 value={formData['Adres'] || ''}
                                 onChange={handleChange}
                             />
@@ -251,9 +251,9 @@ function ProfilePage({ user, onUserUpdate }) {
                         
                         <label>
                             Postcode:
-                            <input
-                                type="text"
-                                name="Postcode"
+                            <input 
+                                type="text" 
+                                name="Postcode" 
                                 value={formData['Postcode'] || ''}
                                 onChange={handleChange}
                             />
@@ -261,9 +261,9 @@ function ProfilePage({ user, onUserUpdate }) {
                         
                         <label>
                             Stad:
-                            <input
-                                type="text"
-                                name="Stad"
+                            <input 
+                                type="text" 
+                                name="Stad" 
                                 value={formData['Stad'] || ''}
                                 onChange={handleChange}
                             />
@@ -389,23 +389,23 @@ function ProfilePage({ user, onUserUpdate }) {
                         ) : (
                             <div className="profile-photo-placeholder">
                                 📷 Geen foto
-                            </div>
-                        )}
-                        
+                                </div>
+                            )}
+
                         <div className="photo-upload">
                             <label className="upload-button">
                                 {uploadingPhoto ? 'Uploaden...' : 'Foto uploaden'}
-                                <input
-                                    type="file"
-                                    accept="image/*"
-                                    onChange={handlePhotoUpload}
+                                <input 
+                                    type="file" 
+                                    accept="image/*" 
+                                    onChange={handlePhotoUpload} 
                                     style={{ display: 'none' }}
                                     disabled={uploadingPhoto}
                                 />
                             </label>
                         </div>
                     </div>
-                    
+
                     {/* Profile Details */}
                     <div className="profile-details">
                         <p><strong>Naam:</strong> {renderField(user.Naam)}</p>
@@ -433,11 +433,11 @@ function ProfilePage({ user, onUserUpdate }) {
                         <label>
                             Thema:
                             <select value={theme} onChange={(e) => setTheme(e.target.value)}>
-                                <option value="light">Licht</option>
-                                <option value="dark">Donker</option>
-                                <option value="christmas">Kerst</option>
-                                <option value="summer">Zomer</option>
-                            </select>
+                            <option value="light">Licht</option>
+                            <option value="dark">Donker</option>
+                            <option value="christmas">Kerst</option>
+                            <option value="summer">Zomer</option>
+                        </select>
                         </label>
                     </div>
                     
@@ -450,7 +450,7 @@ function ProfilePage({ user, onUserUpdate }) {
                             Terug naar Home
                         </Link>
                     </div>
-                    
+
                     {/* Registered Events */}
                     <div className="registered-events">
                         <h2>Mijn Inschrijvingen</h2>
@@ -465,12 +465,12 @@ function ProfilePage({ user, onUserUpdate }) {
                                         <small>
                                             {event['Evenement Start datum'] || event['Start datum'] || event['Start Date'] || event['Start'] || 'Geen datum'}
                                         </small>
-                                        <button 
-                                            onClick={() => handleUnregister(event.id)}
+                                            <button 
+                                                onClick={() => handleUnregister(event.id)}
                                             className="unregister-button"
-                                        >
-                                            Uitschrijven
-                                        </button>
+                                            >
+                                                Uitschrijven
+                                            </button>
                                     </li>
                                 ))}
                             </ul>
@@ -478,7 +478,7 @@ function ProfilePage({ user, onUserUpdate }) {
                             <p>Je bent nog niet ingeschreven voor evenementen.</p>
                         )}
                     </div>
-                </div>
+                    </div>
             )}
             {confirmUnregister && (
                 <div className="modal-overlay"><div className="modal" style={{width:'95vw',maxWidth:400}}><p>Weet je zeker dat je je wilt uitschrijven voor het evenement "{registeredEvents.find(event => event.id === confirmUnregister)?.Evenement}"?</p><button onClick={() => handleUnregister(confirmUnregister)}>Ja, uitschrijven</button><button onClick={() => setConfirmUnregister(null)}>Annuleren</button></div></div>
