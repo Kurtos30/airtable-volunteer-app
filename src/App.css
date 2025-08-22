@@ -265,8 +265,8 @@ body, html {
     padding: 10px 8px;
     min-width: 70px;
     min-height: 44px;
-    flex: 1;
-    max-width: 120px;
+    flex: 0 1 auto;
+    max-width: none;
   }
   
   .rbc-btn-group button:first-child {
@@ -379,7 +379,8 @@ body, html {
     padding: 8px 6px;
     min-width: 60px;
     min-height: 40px;
-    max-width: 100px;
+    flex: 0 1 auto;
+    max-width: none;
   }
 }
 
@@ -1034,6 +1035,8 @@ button:hover {
   align-items: center;
   margin-bottom: 10px;
   gap: 10px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .rbc-toolbar-label {
@@ -1046,6 +1049,9 @@ button:hover {
   display: flex;
   flex-wrap: wrap;
   gap: 2px;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
 }
 
 .rbc-btn-group button {
@@ -1058,6 +1064,10 @@ button:hover {
   transition: all 0.2s ease;
   min-width: 60px;
   text-align: center;
+  flex: 0 1 auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .rbc-btn-group button:hover {
