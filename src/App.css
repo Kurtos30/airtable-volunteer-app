@@ -98,20 +98,20 @@ body, html {
   }
   
   .calendar-container {
-    height: auto;          /* laat de container meegroeien */
-    min-height: 600px;     /* of 70vh, afhankelijk van je scherm */
     padding: 5px;
     border: 1px solid #ddd;
     border-radius: 6px;
     background: white;
-    overflow: visible;     /* belangrijk: niet meer afkappen */
+    overflow: visible; /* laat alles zien */
   }
   
+  /* react-big-calendar fixed height */
   .calendar-container .rbc-calendar {
-    height: 600px !important;  /* RENDER FIX: react-big-calendar heeft dit nodig */
+    height: calc(6 * 60px + 40px) !important; /* 6 weken x 60px + header */
     width: 100% !important;
     display: block !important;
   }
+  
   
 
   
