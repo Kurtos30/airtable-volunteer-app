@@ -98,19 +98,22 @@ body, html {
   }
   
   .calendar-container {
-    height: 60vh;
+    height: auto;          /* laat de container meegroeien */
+    min-height: 600px;     /* of 70vh, afhankelijk van je scherm */
     padding: 5px;
     border: 1px solid #ddd;
     border-radius: 6px;
     background: white;
-    overflow: hidden;
+    overflow: visible;     /* belangrijk: niet meer afkappen */
   }
   
   .calendar-container .rbc-calendar {
-    height: 100% !important;
+    height: 600px !important;  /* RENDER FIX: react-big-calendar heeft dit nodig */
     width: 100% !important;
     display: block !important;
   }
+  
+
   
   .debug-info {
     font-size: 11px;
